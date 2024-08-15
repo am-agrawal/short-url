@@ -1,16 +1,14 @@
+import { getOriginalUrl } from '../services';
+
 export async function getServerSideProps(context) {
   const { shortURL } = context.params;
 
-  const urlMapping = {
-    '40jmnt4': 'https://www.example.com',
-  };
+  const { originalUrl } = await getOriginalUrl(shortURL);
 
-  const originalURL = urlMapping[shortURL];
-
-  if (originalURL) {
+  if (originalUrl) {
     return {
       redirect: {
-        destination: originalURL,
+        destination: originalUrl,
         permanent: false,
       },
     };
