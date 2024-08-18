@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
-    "postinstall": "prisma generate",
+    "postinstall": "npx prisma generate",
     "start": "next start"
   },
   "dependencies": {
