@@ -2,19 +2,24 @@ import { useState } from 'react';
 import Button from '../components/Button';
 import styles from '../styles/home.module.css';
 import { getBaseUrl } from '../utils/urlUtils';
-import { createShortUrl } from '../services/index';
 
 function Home() {
   const [originalUrl, setOriginalUrl] = useState('');
   const [shortenedUrl, setShortenedUrl] = useState(null);
 
   async function handleSubmit() {
-    const { error, shortUrl } = await createShortUrl(originalUrl);
-    if (error) {
-      console.error('Error shortening URL:', error);
-      return;
-    }
-    setShortenedUrl(`${getBaseUrl()}/${shortUrl.shortUrl}`);
+    fetch('/api/shorten', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ originalUrl }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setShortenedUrl(`${getBaseUrl()}/${data.shortUrl}`);
+      })
+      .catch((error) => console.error('Error shortening URL:', error));
   }
 
   return (
