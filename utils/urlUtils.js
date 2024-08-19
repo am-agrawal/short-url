@@ -19,3 +19,7 @@ export async function generateUniqueShortUrl() {
 
   return shortUrl;
 }
+
+export function getBaseUrl() {
+  return `${window.location.protocol}//${window.location.host}`;
+}

@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "npx prisma generate && next build",
     "postinstall": "npx prisma generate",
-    "start": "next start"
+    "start": "next start",
+    "clean": "rm -rf .next"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",
