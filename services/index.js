@@ -23,7 +23,7 @@ export async function getOriginalUrl(shortUrl) {
   }
 }
 
-export async function createShortUrl(originalUrl, createdBy) {
+export async function createShortUrl(originalUrl, createdBy = null) {
   try {
     if (!originalUrl) {
       return { shortUrl: null, error: "URL input can't be empty" };

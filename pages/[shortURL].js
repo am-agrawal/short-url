@@ -1,19 +1,19 @@
 import { getOriginalUrl } from '../services';
-console.error('Short URL Page');
+console.log('Short URL Page');
 
 export async function getServerSideProps(context) {
   const { shortURL } = context.params;
-  console.error('Short URL:', shortURL);
-  
+  console.log('Short URL:', shortURL);
+
   const { originalUrl } = await getOriginalUrl(shortURL);
-  console.error('Original URL:', originalUrl);
+  console.log('Original URL:', originalUrl);
   if (originalUrl) {
     const isExternalUrl =
       originalUrl.startsWith('http://') || originalUrl.startsWith('https://');
     const destinationUrl = isExternalUrl
       ? originalUrl
       : `https://${originalUrl}`;
-    console.error('Redirecting to:', destinationUrl);
+    console.log('Redirecting to:', destinationUrl);
 
     return {
       redirect: {
