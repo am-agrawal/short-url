@@ -4,6 +4,7 @@ import styles from '../styles/home.module.css';
 import { getBaseUrl } from '../utils/urlUtils';
 import { Gravitas_One, Poppins } from '@next/font/google';
 import TextBox from '../components/TextBox';
+import { Refresh2, Copy } from 'iconsax-react';
 import { Toaster, toast } from 'sonner';
 
 const gravitasOne = Gravitas_One({
@@ -64,12 +65,14 @@ function Home() {
               <TextBox
                 id="original-url"
                 name="original-url"
-                placeholder="Enter your link here..."
+                placeholder='Enter your link here...'
                 value={originalUrl}
                 onChange={handleTextChange}
               />
 
-              <Button onClick={() => handleSubmit()}>Shorten</Button>
+              <Button onClick={() => handleSubmit()}>
+                <Refresh2 variant="Outline" />
+              </Button>
             </div>
 
             <div className={styles.flex}>
@@ -81,7 +84,7 @@ function Home() {
               />
 
               <Button onClick={handleCopyText} disabled={!shortenedUrl}>
-                Copy Link
+                <Copy variant="Broken" /> Copy Link
               </Button>
             </div>
           </div>
