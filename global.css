@@ -12,3 +12,8 @@ body {
   text-rendering: optimizeLegibility;
   hyphens: auto;
 }
+
+.dotted-grid {
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle, #282828 2px, rgba(0, 0, 0, 0) 1px);
+}

@@ -2,10 +2,22 @@ import { useState } from 'react';
 import Button from '../components/Button';
 import styles from '../styles/home.module.css';
 import { getBaseUrl } from '../utils/urlUtils';
+import { Gravitas_One, Poppins } from '@next/font/google';
+import TextBox from '../components/TextBox';
+
+const gravitasOne = Gravitas_One({
+  weight: '400',
+  subsets: ['latin'],
+});
+
+const poppins = Poppins({
+  weight: '500',
+  subsets: ['latin'],
+});
 
 function Home() {
   const [originalUrl, setOriginalUrl] = useState('');
-  const [shortenedUrl, setShortenedUrl] = useState(null);
+  const [shortenedUrl, setShortenedUrl] = useState('');
 
   async function handleSubmit() {
     fetch('/api/shorten', {
@@ -22,26 +34,46 @@ function Home() {
       .catch((error) => console.error('Error shortening URL:', error));
   }
 
-  return (
-    <div>
-      <h3>Enter a URL to be shorten</h3>
-      <input
-        type="text"
-        id="url"
-        name="url"
-        value={originalUrl}
-        onChange={(e) => setOriginalUrl(e.target.value)}
-      />
-      <Button onClick={() => handleSubmit()}>Shorten</Button>
+  function handleTextChange(event) {
+    setShortenedUrl('');
+    setOriginalUrl(event.target.value);
+  }
 
-      <div className={styles.shortenedUrl}>
-        {shortenedUrl && (
-          <a href={shortenedUrl} target="_blank" rel="noopener noreferrer">
-            {shortenedUrl}
-          </a>
-        )}
+  function handleCopyText() {
+    navigator.clipboard.writeText(shortenedUrl);
+  }
+
+  return (
+    <main className={styles.mainDiv}>
+      <div className={`${styles.card} dotted-grid`}>
+        <h2 className={gravitasOne.className}>
+          {process.env.NEXT_SHORT_URL_APP_NAME || 'Short - It'}
+        </h2>
+        <div className={styles.form}>
+          <h3 className={`${poppins.className} ${styles.tagline}`}>
+            The simplest URL shortner you were looking for
+          </h3>
+
+          <div className={styles.flex}>
+            <TextBox
+              id="original-url"
+              name="original-url"
+              placeholder="Enter your link here..."
+              value={originalUrl}
+              onChange={handleTextChange}
+            />
+
+            <Button onClick={() => handleSubmit()}>Shorten</Button>
+          </div>
+
+          <div className={styles.flex}>
+            <TextBox id="short-url" name="short-url" value={shortenedUrl} readOnly/>
+
+            <Button onClick={handleCopyText}>Copy Link</Button>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 

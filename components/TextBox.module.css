@@ -1,24 +1,18 @@
-button.btn {
-  margin: 0;
+.textBox {
   border: 1px solid #ffffff6d;
   border-radius: 8px;
-  padding: 0.5em;
   vertical-align: middle;
   white-space: normal;
   background: #1C1E20;
   transition: all 0.2s ease;
   color: #CACACA;
-  cursor: pointer;
   height: 60px;
-  min-width: 60px;
+  min-width: 120px;
+  box-sizing: border-box;
   padding-inline: 1rem;
   font-size: 1.25rem;
 }
 
-button.btn:focus {
+.textBox:focus {
   outline: 0;
-  box-shadow: 0 0 0 2px rgba(108, 108, 108, 0.5);
-}
-button.btn:hover {
-  background: #2b2e31;
 }
