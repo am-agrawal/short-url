@@ -7,6 +7,7 @@ button.btn {
   color: #CACACA;
   cursor: pointer;
   height: 60px;
+  min-width: fit-content;
   padding-inline: 1.5rem;
   font-size: 1.25rem;
   vertical-align: middle;
@@ -27,4 +28,39 @@ button.btn:focus {
 }
 button.btn:hover {
   background: #2b2e31;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  button.btn {
+    font-size: 1rem;
+    height: 50px;
+    padding-inline: 1rem;
+  }
+  button.btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+  button.btn {
+    font-size: 0.75rem;
+  }
+  button.btn svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* Extra small screens (small phones) */
+@media (max-width: 480px) {
+  button.btn {
+    font-size: 0.75rem;
+  }
+  button.btn svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
 }

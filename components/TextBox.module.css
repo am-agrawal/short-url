@@ -16,3 +16,25 @@
 .textBox:focus {
   outline: 0;
 }
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .textBox {
+    height: 50px;
+    font-size: 1rem;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+  .textBox {
+    font-size: 0.75rem;
+  }
+}
+
+/* Extra small screens (small phones) */
+@media (max-width: 480px) {
+  .textBox {
+    font-size: 0.75rem;
+  }
+}

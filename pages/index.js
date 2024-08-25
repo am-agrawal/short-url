@@ -65,7 +65,7 @@ function Home() {
               <TextBox
                 id="original-url"
                 name="original-url"
-                placeholder='Enter your link here...'
+                placeholder="Enter your link here..."
                 value={originalUrl}
                 onChange={handleTextChange}
               />
